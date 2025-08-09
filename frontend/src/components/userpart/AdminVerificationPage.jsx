@@ -11,6 +11,7 @@ const AdminVerificationPage = ({
     setIsAdminAuthenticated,
     setSnackbar,
     setAdminVerification,
+    setUserId
 }) => {
     const [form, setForm] = useState({
         secretKey: "",
@@ -24,7 +25,7 @@ const AdminVerificationPage = ({
     const handleVerify = async () => {
         setError("");
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/admin/security", {
+            const res = await axios.post("https://goklyn-backend.vercel.app/api/auth/admin/security", {
                 secretKey: form.secretKey,
                 favoriteColor: form.favoriteColor,
                 adminPIN: form.adminPIN,
@@ -45,10 +46,12 @@ const AdminVerificationPage = ({
                     severity: "success",
                 });
                 setLogin(false);
+                setUserId(res.data.user.id);
                 setAdminVerification(false);
                 navigate("/dashboard");
             } else { 
                 setError(res.data.message || "Verification failed. Please check your answers.");
+                setUserId('');
             }
         } catch (err) {
             setError(err.response?.data?.message || "Verification failed. Please check your answers.");

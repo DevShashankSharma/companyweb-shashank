@@ -33,7 +33,7 @@ const TestimonialModel = ({
         try {
             let res, data;
             if (update) {
-                res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+                res = await fetch(`https://goklyn-backend.vercel.app/api/testimonials/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(newTestimonial)
@@ -43,7 +43,7 @@ const TestimonialModel = ({
                 setUpdate(false);
                 await fetchTestimonials();
             } else {
-                res = await fetch("http://localhost:5000/api/testimonials", {
+                res = await fetch("https://goklyn-backend.vercel.app/api/testimonials", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ ...newTestimonial, createdAt: new Date() })

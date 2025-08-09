@@ -90,11 +90,11 @@ const ContactUs = ({ userId, userlogin, isAdminAuthenticated }) => {
 
     // Submit to MongoDB backend
     try {
-      await fetch("http://localhost:5000/api/enquiries", {
+      await fetch("https://goklyn-backend.vercel.app/api/enquiries", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, userId })
-      });
+      }); 
       setTimeout(() => {
         setIsSubmitting(false);
         setMessage("Thank you for your message! We'll get back to you within 24 hours.");

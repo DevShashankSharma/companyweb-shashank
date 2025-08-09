@@ -21,7 +21,7 @@ const MediaPress = ({ isAdminAuthenticated }) => {
     // Fetch media from MongoDB backend
     const fetchMedia = useCallback(async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/media");
+            const res = await fetch("https://goklyn-backend.vercel.app/api/media");
             const data = await res.json();
             setMediaAll(data.mediaList || []); 
         } catch (err) {
@@ -39,7 +39,7 @@ const MediaPress = ({ isAdminAuthenticated }) => {
         const media = confirmPopup.media;
         setConfirmPopup({ show: false, media: null });
         try {
-            const res = await fetch(`http://localhost:5000/api/media/${media._id}`, {
+            const res = await fetch(`https://goklyn-backend.vercel.app/api/media/${media._id}`, {
                 method: "DELETE"
             });
             const data = await res.json();

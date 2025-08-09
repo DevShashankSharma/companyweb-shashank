@@ -28,7 +28,7 @@ const Projects = ({ isAdminAuthenticated }) => {
   const fetchProjectCategories = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/categories');
+      const res = await axios.get('https://goklyn-backend.vercel.app/api/projects/categories');
       const categories = res.data.categories?.map(cat => ({
         ...cat,
         image: cat.image
@@ -65,7 +65,7 @@ const Projects = ({ isAdminAuthenticated }) => {
     const category = confirmPopup.category;
     setConfirmPopup({ show: false, category: null });
     try {
-      const res = await axios.delete(`http://localhost:5000/api/projects/category/${category._id}`);
+      const res = await axios.delete(`https://goklyn-backend.vercel.app/api/projects/category/${category._id}`);
       setProjectCategories(prev => prev.filter(cat => cat._id !== category._id));
       setPopup({ show: true, message: res.data.message, type: res.data.success ? "success" : "error" });
     } catch (err) {

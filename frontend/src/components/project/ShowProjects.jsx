@@ -30,7 +30,7 @@ const ShowProjects = ({ isAdminAuthenticated }) => {
     const fetchProjects = useCallback(async () => {
         setLoading(true);
         try {
-            const res = await axios.get(`http://localhost:5000/api/projects/?category=${type}`);
+            const res = await axios.get(`https://goklyn-backend.vercel.app/api/projects/?category=${type}`);
             setProjects(res.data || []);
         } catch (error) {
             console.error("Failed to fetch projects:", error);
@@ -60,7 +60,7 @@ const ShowProjects = ({ isAdminAuthenticated }) => {
         const project = confirmPopup.project;
         setConfirmPopup({ show: false, project: null });
         try {
-            const res = await axios.delete(`http://localhost:5000/api/projects/${project._id}`);
+            const res = await axios.delete(`https://goklyn-backend.vercel.app/api/projects/${project._id}`);
             setProjects((prev) => prev.filter((p) => p._id !== project._id));
             setPopup({ show: true, message: res.data.message || "Project deleted!", type: "success" });
         } catch (error) {

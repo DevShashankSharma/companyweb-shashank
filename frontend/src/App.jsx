@@ -31,7 +31,7 @@ function App() {
 
   const checkAdmin = async (id, username) => {
   try {
-    const { data } = await axios.post("http://localhost:5000/api/auth/check-admin", {
+    const { data } = await axios.post("https://goklyn-backend.vercel.app/api/auth/check-admin", {
       id,
       username
     });
@@ -101,7 +101,7 @@ function App() {
             <Route path='/contact' element={<ContactUs userId={userId} isAdminAuthenticated={isAdminAuthenticated} userlogin={userlogin} />} />
             <Route path='/services' element={<OurServices />} />
             <Route path="/projects" element={<Projects isAdminAuthenticated={isAdminAuthenticated} />} />
-            <Route path="/login" element={<AdminLogin setLogin={setLogin} setIsAdminAuthenticated={setIsAdminAuthenticated} setUserLogin={setUserLogin} setSnackbar={setSnackbar} />} />
+            <Route path="/login" element={<AdminLogin setLogin={setLogin} setIsAdminAuthenticated={setIsAdminAuthenticated} setUserLogin={setUserLogin} setSnackbar={setSnackbar} setUserId={setUserId}/>} />
             <Route path="/showprojects/:type" element={<ShowProjects isAdminAuthenticated={isAdminAuthenticated} />} />
             {/* if user is logged in then only show UserDashboard */}
             {userlogin.loggedin && <Route path="/dashboard" element={<UserDashboard handleLogout={handleLogout} userId={userId} isAdminAuthenticated={isAdminAuthenticated} />} />}

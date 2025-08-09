@@ -73,7 +73,7 @@ const PartnerModal = ({
         try {
             let res, data;
             if (update) {
-                res = await fetch(`http://localhost:5000/api/partners/${id}`, {
+                res = await fetch(`https://goklyn-backend.vercel.app/api/partners/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(newPartner)
@@ -83,7 +83,7 @@ const PartnerModal = ({
                 setUpdate(false);
                 await fetchPartners();
             } else {
-                res = await fetch("http://localhost:5000/api/partners", {
+                res = await fetch("https://goklyn-backend.vercel.app/api/partners", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ ...newPartner, createdAt: new Date() })

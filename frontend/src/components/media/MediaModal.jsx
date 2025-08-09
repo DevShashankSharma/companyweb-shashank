@@ -54,7 +54,7 @@ const MediaModal = ({ newMedia, setNewMedia, setShowModal, setUpdate, update, id
         try {
             let res, data;
             if (update) {
-                res = await fetch(`http://localhost:5000/api/media/${id}`, {
+                res = await fetch(`https://goklyn-backend.vercel.app/api/media/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(newMedia)
@@ -64,7 +64,7 @@ const MediaModal = ({ newMedia, setNewMedia, setShowModal, setUpdate, update, id
                 await fetchMedia();
                 setUpdate(false);
             } else {
-                res = await fetch("http://localhost:5000/api/media", {
+                res = await fetch("https://goklyn-backend.vercel.app/api/media", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ ...newMedia, createdAt: new Date() })

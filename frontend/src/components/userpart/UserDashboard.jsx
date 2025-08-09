@@ -17,7 +17,7 @@ const UserDashboard = ({ userId, handleLogout, isAdminAuthenticated }) => {
         const fetchUser = async () => {
             try {
                 // Fetch user from MongoDB backend
-                const endpoint = `http://localhost:5000/api/auth/${savedUser.id}`;
+                const endpoint = `https://goklyn-backend.vercel.app/api/auth/${savedUser.id}`;
                 const res = await axios.get(endpoint); 
                 if (res.data && res.data.data) {
                     setUser(res.data.data);
@@ -32,11 +32,11 @@ const UserDashboard = ({ userId, handleLogout, isAdminAuthenticated }) => {
 
         const fetchAppliedServices = async () => {
             try {
-                const endpoint = `http://localhost:5000/api/enquiries?userId=${savedUser.id}`;
+                const endpoint = `https://goklyn-backend.vercel.app/api/enquiries?userId=${savedUser.id}`;
                 const res = await axios.get(endpoint); 
                 if (res.data) {
                     setAppliedServices(res.data);
-                }
+                } 
             } catch (error) {
                 console.error("Error fetching applied services:", error);
             }

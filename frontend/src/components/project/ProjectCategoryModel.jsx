@@ -70,11 +70,11 @@ const ProjectCategoryModel = ({ newProjectCategory, setNewProjectCategory, setSh
         try {
             if (update) {
                 // UPDATE existing category 
-                const res = await axios.put(`http://localhost:5000/api/projects/category/${id}`, newProjectCategory);
+                const res = await axios.put(`https://goklyn-backend.vercel.app/api/projects/category/${id}`, newProjectCategory);
                 setPopup({ show: true, message: res.data.message, type: res.data.success ? "success" : "error" });
             } else {
                 // ADD new category
-                const res = await axios.post(`http://localhost:5000/api/projects/category`, newProjectCategory);
+                const res = await axios.post(`https://goklyn-backend.vercel.app/api/projects/category`, newProjectCategory);
  
                 setPopup({ show: true, message: res.data.message, type: res.data.success ? "success" : "error" });
             }

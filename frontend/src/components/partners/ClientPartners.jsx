@@ -49,7 +49,7 @@ const ClientPartners = ({ isAdminAuthenticated }) => {
   // Fetch partners from MongoDB backend
   const fetchPartners = useCallback(async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/partners");
+      const res = await axios.get("https://goklyn-backend.vercel.app/api/partners");
       setPartners(res.data || []);
     } catch (error) {
       setPartners([]);
@@ -66,7 +66,7 @@ const ClientPartners = ({ isAdminAuthenticated }) => {
     const partner = confirmPopup.partner;
     setConfirmPopup({ show: false, partner: null });
     try {
-      const res = await axios.delete(`http://localhost:5000/api/partners/${partner._id}`);
+      const res = await axios.delete(`https://goklyn-backend.vercel.app/api/partners/${partner._id}`);
       setPopup({ show: true, message: res.data.message, type: res.data.success ? "success" : "error" });
       await fetchPartners();
     } catch (error) {

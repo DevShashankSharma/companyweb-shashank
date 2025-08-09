@@ -77,7 +77,7 @@ const ProjectModal = ({
 
         try {
             if (update) {
-                const res = await fetch(`http://localhost:5000/api/projects/${id}`, {
+                const res = await fetch(`https://goklyn-backend.vercel.app/api/projects/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(projectToSave)
@@ -85,7 +85,7 @@ const ProjectModal = ({
                 const data = await res.json();
                 setPopup({ show: true, message: data.message, type: data.success ? "success" : "error" });
             } else {
-                const res = await fetch(`http://localhost:5000/api/projects`, {
+                const res = await fetch(`https://goklyn-backend.vercel.app/api/projects`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(projectToSave)

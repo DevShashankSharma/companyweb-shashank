@@ -10,7 +10,7 @@ const generateCaptcha = () => {
   return Array.from({ length: 5 }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
 };
 
-const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackbar }) => {
+const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackbar, setUserId }) => {
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(true);
   const [adminverification, setAdminVerification] = useState(false);
@@ -56,7 +56,7 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
     if (isRegistered) {
       // Login
       try {
-        const res = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+        const res = await axios.post('https://goklyn-backend.vercel.app/api/auth/login', { username, password });
         if (res.data.isAdmin) {
           setAdminVerification(true);
           return;
@@ -66,9 +66,11 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
           localStorage.setItem('userInfo', JSON.stringify({ id: res.data.user._id, username: res.data.user.username, loggedin: true }));
           setSnackbar({ open: true, message: 'User logged in successfully!', severity: 'success' });
           setLogin(false);
+          setUserId(res.data.user._id);
           navigate('/');
         } else {
           setError(res.data.message || 'Invalid username or password');
+          setUserId('');
         }
       } catch (err) {
         setError(err.response?.data?.message || 'Login failed');
@@ -80,7 +82,7 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
         return;
       }
       try {
-        const res = await axios.post('http://localhost:5000/api/auth/register', {
+        const res = await axios.post('https://goklyn-backend.vercel.app/api/auth/register', {
           username, password, name, email, phone, address
         });
         if (res.data.success) {
@@ -88,9 +90,11 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
           localStorage.setItem('userInfo', JSON.stringify({ id: res.data.user._id, username: res.data.user.username, loggedin: true }));
           setSnackbar({ open: true, message: 'User registered successfully!', severity: 'success' });
           setLogin(false);
+          setUserId(res.data.user._id);
           navigate('/');
         } else {
           setError(res.data.message || 'Registration failed');
+          setUserId('');
         }
       } catch (err) {
         setError(err.response?.data?.message || 'Failed to save user. Please try again.');
@@ -269,7 +273,7 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
       </div>
 
       {adminverification && (
-        <AdminVerificationPage setLogin={setLogin} setAdminVerification={setAdminVerification} setUserLogin={setUserLogin} setIsAdminAuthenticated={setIsAdminAuthenticated} setSnackbar={setSnackbar}/>
+        <AdminVerificationPage setLogin={setLogin} setAdminVerification={setAdminVerification} setUserLogin={setUserLogin} setIsAdminAuthenticated={setIsAdminAuthenticated} setSnackbar={setSnackbar} setUserId={setUserId}/>
       )}
     </div>
   );
