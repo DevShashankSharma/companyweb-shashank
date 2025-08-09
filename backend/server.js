@@ -38,4 +38,4 @@ app.use('/api/testimonials', testimonialRoutes); // Testimonial routes
 app.use('/api/media', mediaRoutes); // Media routes
 
 
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
