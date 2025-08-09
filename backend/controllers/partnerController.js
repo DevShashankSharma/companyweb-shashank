@@ -1,4 +1,4 @@
-const Partner = require("../models/partner.js");
+const Partner = require("../models/Partner.js");
 
 // Create Partner
 const createPartner = async (req, res) => {
