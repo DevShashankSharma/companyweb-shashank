@@ -37,5 +37,8 @@ app.use("/api/partners", partnerRoutes);
 app.use('/api/testimonials', testimonialRoutes); // Testimonial routes
 app.use('/api/media', mediaRoutes); // Media routes
 
+app.use('/', (req, res) => {
+    res.send('Welcome to the Goklyn Backend');
+});
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
