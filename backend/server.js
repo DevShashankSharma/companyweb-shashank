@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const userRoutes = require('./routes/userRoutes'); 
+const userRoutes = require('./routes/userRoutes');
 const projectRoutes = require('./routes/projectRoutes'); // Importing project routes
 const enquiryRoutes = require("./routes/enquiryRoutes.js");
 const partnerRoutes = require("./routes/partnerRoutes.js"); // Importing partner routes
@@ -21,7 +21,7 @@ app.use(express.json());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => { 
+    .then(() => {
         console.log('MongoDB connected successfully');
     })
     .catch((err) => {
@@ -37,8 +37,9 @@ app.use("/api/partners", partnerRoutes);
 app.use('/api/testimonials', testimonialRoutes); // Testimonial routes
 app.use('/api/media', mediaRoutes); // Media routes
 
-app.use('/', (req, res) => {
-    res.send('Welcome to the Goklyn Backend');
+app.get('/', (req, res) => {
+    res.send('Backend is running on Vercel 🚀');
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+module.exports = app; // Exporting the app for testing purposes
