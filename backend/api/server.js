@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-const userRoutes = require('./routes/userRoutes');
-const projectRoutes = require('./routes/projectRoutes'); // Importing project routes
-const enquiryRoutes = require("./routes/enquiryRoutes.js");
-const partnerRoutes = require("./routes/partnerRoutes.js"); // Importing partner routes
-const testimonialRoutes = require('./routes/testimonialRoutes'); // Importing testimonial routes
-const mediaRoutes = require('./routes/mediaRoutes'); // Importing media routes
+const userRoutes = require('../routes/userRoutes.js');
+const projectRoutes = require('../routes/projectRoutes.js'); // Importing project routes
+const enquiryRoutes = require("../routes/enquiryRoutes.js");
+const partnerRoutes = require("../routes/partnerRoutes.js"); // Importing partner routes
+const testimonialRoutes = require('../routes/testimonialRoutes.js'); // Importing testimonial routes
+const mediaRoutes = require('../routes/mediaRoutes.js'); // Importing media routes
 
 dotenv.config();
 
@@ -41,5 +41,5 @@ app.get('/', (req, res) => {
     res.send('Backend is running on Vercel 🚀');
 });
 
-// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 module.exports = app; // Exporting the app for testing purposes
