@@ -37,8 +37,9 @@ app.use("/api/partners", partnerRoutes);
 app.use('/api/testimonials', testimonialRoutes); // Testimonial routes
 app.use('/api/media', mediaRoutes); // Media routes
 
-app.get('/', (req, res) => {
-    res.send('Backend is running on Vercel 🚀');
+app.use((err, req, res, next) => {
+    console.error('Unhandled error:', err);
+    res.status(500).json({ error: 'Internal Server Error', details: err.message });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
