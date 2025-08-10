@@ -57,6 +57,7 @@ const LoginPage = ({ setLogin, setIsAdminAuthenticated, setUserLogin, setSnackba
       // Login
       try {
         const res = await axios.post('https://goklyn-backend.vercel.app/api/auth/login', { username, password });
+        console.log(res.data);
         if (res.data.isAdmin) {
           setAdminVerification(true);
           return;

@@ -250,12 +250,7 @@ const ContactUs = ({ userId, userlogin, isAdminAuthenticated }) => {
       name: "GitHub",
       url: "https://github.com/goklyn",
       icon: "https://cdn-icons-png.flaticon.com/512/733/733553.png"
-    },
-    {
-      name: "Twitter",
-      url: "https://twitter.com/goklyn",
-      icon: "https://cdn-icons-png.flaticon.com/512/733/733579.png"
-    }
+    }, 
   ];
 
 

@@ -65,8 +65,7 @@ function TestimonialCarousel({ isAdminAuthenticated }) {
     };
 
     useEffect(() => {
-        fetchTestimonials();
-        // eslint-disable-next-line
+        fetchTestimonials(); 
     }, []);
 
     const handleModalOpen = () => {
